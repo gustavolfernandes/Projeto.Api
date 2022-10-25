@@ -24,29 +24,29 @@ namespace Projeto.Application.Products
         {
             var (id, name) = command;
             ProductsRepository.Add(new Product(id, name));
-            await ProductsRepository.SaveChangesAsync();
+            await ProductsRepository.SaveChanges();
         }
 
         public async Task RunAsync(DeleteProductCommand command)
         {
             var id = command.Id.ToType<ProductId>();
 
-            var entity = await ProductsService.FindByIdAsync(id);
+            var entity = await ProductsService.FindById(id);
             if (entity is null) throw new AppException("Product not found");
 
             ProductsRepository.Remove(entity);
-            await ProductsRepository.SaveChangesAsync();
+            await ProductsRepository.SaveChanges();
         }
 
         public async Task RunAsync(PutProductCommand command)
         {
             var (id, name) = command;
 
-            var entity = await ProductsService.FindByIdAsync(id);
+            var entity = await ProductsService.FindById(id);
             if (entity is null) throw new AppException("Product not found");
 
             entity.Update(name);
-            await ProductsRepository.SaveChangesAsync();
+            await ProductsRepository.SaveChanges();
         }
     }
 }

@@ -18,13 +18,13 @@ namespace Projeto.Application.Products
 
         public async Task<ProductResult[]> RunAsync(GetProductsQuery query)
         {
-            var items = await ProductsService.FindAllAsync();
+            var items = await ProductsService.FindAll();
             return items.Select(e => new ProductResult(e)).ToArray();
         }
         public async Task<ProductResult> RunAsync(GetProductQuery query)
         {
             var id = query.Id.ToType<ProductId>();
-            var entity = await ProductsService.FindByIdAsync(id);
+            var entity = await ProductsService.FindById(id);
             if (entity is null) throw new AppException("Product not found");
 
             return new ProductResult(entity);
