@@ -2,10 +2,10 @@
 {
     public interface IProductsRepository
     {
-        Task<Product[]> FindAllAsync();
-        Task<Product?> FindByIdAsync(ProductId id);
+        Task<Product[]> FindAll();
+        Task<Product?> FindById(ProductId id);
         void Add(Product entity);
-        Task SaveChangesAsync();
+        Task SaveChanges();
         void Remove(Product entity);
     }
 }

@@ -20,9 +20,9 @@ namespace Projeto.Infra.Services
             ProductsRepository = productsRepository;
         }
 
-        public Task<Product[]> FindAllAsync() 
-            => ProductsRepository.FindAllAsync();
-        public Task<Product?> FindByIdAsync(ProductId id) 
-            => ProductsRepository.FindByIdAsync(id);
+        public Task<Product[]> FindAll() 
+            => ProductsRepository.FindAll();
+        public Task<Product?> FindById(ProductId id) 
+            => ProductsRepository.FindById(id);
     }
 }

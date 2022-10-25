@@ -13,9 +13,9 @@ public sealed class ProductsRepository : IProductsRepository
 
     private ProjetoContext Db { get; }
 
-    public Task<Product[]> FindAllAsync() 
+    public Task<Product[]> FindAll() 
         => Db.Product.ToArrayAsync();
-    public Task<Product?> FindByIdAsync(ProductId id) 
+    public Task<Product?> FindById(ProductId id) 
         => Db.Product.Where(e => e.Id == id).SingleOrDefaultAsync();
 
     public void Add(Product entity)
@@ -24,6 +24,6 @@ public sealed class ProductsRepository : IProductsRepository
     public void Remove(Product product) 
         => Db.Product.Remove(product);
 
-    public Task SaveChangesAsync()
+    public Task SaveChanges()
         => Db.SaveChangesAsync();
 }
