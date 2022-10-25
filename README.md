@@ -1,6 +1,6 @@
 # Projeto.Api
-API RESTful para treinar estruturação de patterns em uma API
+API RESTful to practice software engineering
 
-Design Patterns utilizados:
+Design Patterns used:
 
-DDD, TDD, CQRS, SOLID, MVC, Repository Pattern, Unit Tests, Clean Code e micro-serviços.
+DDD, TDD, CQRS, SOLID, MVC, Repository Pattern, Unit Tests, Clean Code e micro-services.
