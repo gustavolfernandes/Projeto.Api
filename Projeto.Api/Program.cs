@@ -34,10 +34,9 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Projeto Api", Version = "v1" });
 });
 
-var cors = "allow";
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(cors, policy =>
+    options.AddPolicy("allow", policy =>
     {
         policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
     });
@@ -63,7 +62,7 @@ app.UseSwaggerUI(c =>
 app.UseRouting();
 
 app.UseHsts();
-app.UseCors(cors);
+app.UseCors("allow");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
