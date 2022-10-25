@@ -17,12 +17,12 @@ namespace Projeto.Application.Products
 
         private IProductsService ProductsService { get; }
 
-        public async Task<ProductResult[]> Handle(GetProductsQuery query)
+        public async Task<ProductResult[]> Handle(GetProductsQuery query, CancellationToken cancellationToken)
         {
             var items = await ProductsService.FindAll();
             return items.Select(e => new ProductResult(e)).ToArray();
         }
-        public async Task<ProductResult> Handle(GetProductQuery query)
+        public async Task<ProductResult> Handle(GetProductQuery query, CancellationToken cancellationToken)
         {
             var id = query.Id.ToType<ProductId>();
             var entity = await ProductsService.FindById(id);

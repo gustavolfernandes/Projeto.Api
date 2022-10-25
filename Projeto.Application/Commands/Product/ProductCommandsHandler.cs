@@ -21,7 +21,7 @@ namespace Projeto.Application.Products
         private IProductsRepository ProductsRepository { get; }
         private IProductsService ProductsService { get; }
 
-        public async Task<ProductCommandResponse> Handle(PostProductCommand command)
+        public async Task<ProductCommandResponse> Handle(PostProductCommand command, CancellationToken cancellationToken)
         {
             var (id, name) = command;
             ProductsRepository.Add(new Product(id, name));
@@ -30,7 +30,7 @@ namespace Projeto.Application.Products
             return response;
         }
 
-        public async Task<ProductCommandResponse> Handle(DeleteProductCommand command)
+        public async Task<ProductCommandResponse> Handle(DeleteProductCommand command, CancellationToken cancellationToken)
         {
             var id = command.Id.ToType<ProductId>();
 
@@ -43,7 +43,7 @@ namespace Projeto.Application.Products
             return response;
         }
 
-        public async Task<ProductCommandResponse> RunAsync(PutProductCommand command)
+        public async Task<ProductCommandResponse> Handle(PutProductCommand command, CancellationToken cancellationToken)
         {
             var (id, name) = command;
 
