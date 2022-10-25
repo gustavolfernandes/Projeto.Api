@@ -13,6 +13,11 @@ public sealed class ProductsRepository : IProductsRepository
 
     private ProjetoContext Db { get; }
 
+    public Task<Product[]> FindAllAsync() 
+        => Db.Product.ToArrayAsync();
+    public Task<Product?> FindByIdAsync(ProductId id) 
+        => Db.Product.Where(e => e.Id == id).SingleOrDefaultAsync();
+
     public void Add(Product entity)
         => Db.Product.Add(entity);
 

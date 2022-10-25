@@ -1,6 +1,7 @@
 ﻿using Projeto.Domain.Interfaces;
 using Projeto.Infra;
 using Projeto.Domain;
+using Projeto.Application.Products.Services;
 
 namespace Projeto.Application.Products
 {
